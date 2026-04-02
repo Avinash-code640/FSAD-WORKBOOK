@@ -1,13 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:opsz@24..72&family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap");
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1,
+h2,
+h3 {
+  font-family: "DM Serif Display", Georgia, serif;
+  font-weight: 400;
+}
+
+p {
+  line-height: 1.55;
+}
+
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }

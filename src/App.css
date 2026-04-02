@@ -1,38 +1,195 @@
-.App {
-  text-align: center;
+:root {
+  --bg-1: #f9f6ef;
+  --bg-2: #e8f0e6;
+  --bg-3: #f3e7db;
+  --ink: #1f2933;
+  --muted: #52606d;
+  --brand: #0c6f6a;
+  --brand-strong: #074f4b;
+  --accent: #e37b40;
+  --surface: rgba(255, 255, 255, 0.78);
+  --border: rgba(12, 111, 106, 0.2);
+  --shadow: 0 20px 40px rgba(12, 111, 106, 0.15);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-shell {
   min-height: 100vh;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 15%, rgba(227, 123, 64, 0.2), transparent 35%),
+    radial-gradient(circle at 90% 25%, rgba(12, 111, 106, 0.18), transparent 30%),
+    linear-gradient(135deg, var(--bg-1), var(--bg-2) 50%, var(--bg-3));
+}
+
+.dashboard {
+  width: min(1080px, 92vw);
+  margin: 0 auto;
+  padding: 3.2rem 0 4rem;
+  animation: rise-in 550ms ease-out;
+}
+
+.dashboard-hero {
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  padding: 1.8rem 1.6rem;
+  box-shadow: var(--shadow);
+}
+
+.hero-tag {
+  margin: 0;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--brand);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dashboard-hero h1 {
+  margin: 0.45rem 0;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  line-height: 1.2;
+}
+
+.hero-subtitle {
+  margin: 0;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.tab-bar {
+  margin-top: 1.2rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
-.App-link {
-  color: #61dafb;
+.tab-button {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.65);
+  color: var(--ink);
+  border-radius: 999px;
+  padding: 0.7rem 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 180ms ease, background-color 180ms ease, color 180ms ease;
 }
 
-@keyframes App-logo-spin {
+.tab-button:hover {
+  transform: translateY(-2px);
+}
+
+.tab-button.active {
+  background: var(--brand);
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.content-panel {
+  margin-top: 1.2rem;
+  background: var(--surface);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  box-shadow: var(--shadow);
+  padding: 1.3rem;
+}
+
+.section-block h2 {
+  margin: 0 0 1rem;
+  color: var(--brand-strong);
+}
+
+.grid-cards,
+.post-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.8rem;
+}
+
+.card {
+  border: 1px solid rgba(12, 111, 106, 0.14);
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 0.95rem;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+  animation: stagger-in 400ms ease both;
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 18px rgba(12, 111, 106, 0.12);
+}
+
+.card h3 {
+  margin: 0 0 0.35rem;
+  font-size: 1.02rem;
+}
+
+.card p {
+  margin: 0.2rem 0;
+  color: var(--muted);
+}
+
+.controls-row {
+  display: flex;
+  gap: 0.7rem;
+  margin-bottom: 0.95rem;
+  flex-wrap: wrap;
+}
+
+.filter-select,
+.action-button {
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  padding: 0.58rem 0.8rem;
+  font: inherit;
+}
+
+.action-button {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.action-button:hover {
+  background: #cc6630;
+}
+
+@keyframes rise-in {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
+    transform: translateY(12px);
   }
+
   to {
-    transform: rotate(360deg);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes stagger-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard {
+    padding-top: 1.8rem;
+  }
+
+  .dashboard-hero,
+  .content-panel {
+    border-radius: 16px;
   }
 }
